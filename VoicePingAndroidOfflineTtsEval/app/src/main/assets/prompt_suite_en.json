@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "language": "en",
+  "prompts": [
+    { "id": "short_01", "text": "Hello. This is a test of offline text to speech." },
+    { "id": "short_02", "text": "The quick brown fox jumps over the lazy dog." },
+    { "id": "short_03", "text": "Today is February 15, 2026." },
+    { "id": "short_04", "text": "Call me at 555-0123 at 7:45 PM." },
+    { "id": "short_05", "text": "Version 1.0 shipped on 2026-02-15." },
+
+    { "id": "medium_01", "text": "In an offline TTS benchmark, we measure synthesis time and audio duration. A real-time factor below one means faster than real time." },
+    { "id": "medium_02", "text": "Please read this sentence clearly, with natural pauses. Numbers like 3.14159 and 2,718 should sound correct." },
+    { "id": "medium_03", "text": "This prompt includes punctuation: commas, periods, semicolons; and questions? Also quotes: 'hello' and \"world\"." },
+    { "id": "medium_04", "text": "When testing voices, we care about intelligibility and stability. But for this project, we score speed only: tok per second and RTF." },
+    { "id": "medium_05", "text": "The weather is nice, but the benchmark must be repeatable. Please speak at a consistent pace and avoid long silences." },
+
+    { "id": "long_01", "text": "This is a longer prompt for measuring throughput. The goal is to produce enough audio to observe performance differences across models. We will run the same text many times, collect synthesis time in milliseconds, and compute tokens per second and the real time factor. If the model produces audio quickly, the real time factor will be low. If it is slow, the factor will rise above one." },
+    { "id": "long_02", "text": "Here is another long prompt. Offline text to speech models vary in quality, size, and compute cost. Some use ONNX Runtime on CPU, while others use platform APIs. In this benchmark, we do not judge pronunciation with a human score. Instead, we measure how fast the model can generate a waveform for the same input. This makes the results easy to compare across devices and models." }
+  ]
+}
+

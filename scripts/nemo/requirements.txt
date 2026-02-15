@@ -1,0 +1,9 @@
+# Pinned requirements for local NeMo -> ONNX export.
+# If pip cannot satisfy these on your machine, adjust versions to match your Python / platform.
+
+numpy==1.26.4
+onnx==1.16.1
+onnxruntime-tools==1.17.1
+torch==2.4.1
+nemo_toolkit[tts]==2.0.0
+

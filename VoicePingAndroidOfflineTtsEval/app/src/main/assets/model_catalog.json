@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "id": "kokoro-en-v0_19",
+      "display_name": "Kokoro EN (v0.19)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": { "kind": "hf", "repo": "csukuangfj/kokoro-en-v0_19", "rev": "main" },
+      "files": ["model.onnx", "tokens.txt", "voices.bin"],
+      "prefixes": ["espeak-ng-data/"],
+      "meta": {
+        "languages": "en",
+        "description": "Kokoro TTS (English) via sherpa-onnx OfflineTts.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-int8-multi-lang-v1_1",
+      "display_name": "Kokoro Multi-lang INT8 (v1.1)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": { "kind": "hf", "repo": "csukuangfj/kokoro-int8-multi-lang-v1_1", "rev": "main" },
+      "files": [
+        "model.int8.onnx",
+        "tokens.txt",
+        "voices.bin",
+        "lexicon-us-en.txt",
+        "lexicon-gb-en.txt",
+        "lexicon-zh.txt",
+        "date-zh.fst"
+      ],
+      "prefixes": ["espeak-ng-data/", "dict/"],
+      "meta": {
+        "languages": "multi",
+        "description": "Kokoro multilingual INT8. Benchmark suite uses English prompts only.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-amy-low",
+      "display_name": "Piper VITS (en_US amy, low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": { "kind": "hf", "repo": "csukuangfj/vits-piper-en_US-amy-low", "rev": "main" },
+      "files": ["en_US-amy-low.onnx", "tokens.txt"],
+      "prefixes": ["espeak-ng-data/"],
+      "meta": {
+        "languages": "en",
+        "description": "Piper VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ryan-low",
+      "display_name": "Piper VITS (en_US ryan, low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": { "kind": "hf", "repo": "csukuangfj/vits-piper-en_US-ryan-low", "rev": "main" },
+      "files": ["en_US-ryan-low.onnx", "tokens.txt"],
+      "prefixes": ["espeak-ng-data/"],
+      "meta": {
+        "languages": "en",
+        "description": "Piper VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "sherpa-hifigan-v3",
+      "display_name": "HiFiGAN Vocoder (v3)",
+      "engine": "asset_only",
+      "model_type": "vocoder",
+      "source": { "kind": "hf", "repo": "csukuangfj/sherpa-onnx-hifigan", "rev": "main" },
+      "files": ["hifigan_v3.onnx"],
+      "prefixes": [],
+      "meta": {
+        "languages": "n/a",
+        "description": "Vocoder dependency for Matcha models.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-en-us-ljspeech",
+      "display_name": "Matcha (en_US LJSpeech)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": { "kind": "hf", "repo": "csukuangfj/matcha-icefall-en_US-ljspeech", "rev": "main" },
+      "files": ["model-steps-3.onnx", "tokens.txt"],
+      "prefixes": ["espeak-ng-data/"],
+      "dependencies": ["sherpa-hifigan-v3"],
+      "meta": {
+        "languages": "en",
+        "description": "Matcha acoustic model + HiFiGAN vocoder.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kitten-nano-en-v0_2-fp16",
+      "display_name": "Kitten Nano EN (v0.2 fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kitten",
+      "source": { "kind": "hf", "repo": "csukuangfj/kitten-nano-en-v0_2-fp16", "rev": "main" },
+      "files": ["model.fp16.onnx", "tokens.txt", "voices.bin"],
+      "prefixes": ["espeak-ng-data/"],
+      "meta": {
+        "languages": "en",
+        "description": "Kitten TTS via sherpa-onnx OfflineTtsKittenModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "android-system-tts",
+      "display_name": "Android System TTS",
+      "engine": "android_system_tts",
+      "model_type": "system",
+      "source": { "kind": "system" },
+      "files": [],
+      "prefixes": [],
+      "meta": {
+        "languages": "system",
+        "description": "Android TextToSpeech baseline.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "nemo-fastpitch-hifigan-en",
+      "display_name": "NVIDIA NeMo FastPitch + HiFiGAN (EN)",
+      "engine": "nemo_ort",
+      "model_type": "nemo_fastpitch_hifigan",
+      "source": { "kind": "local_bundle", "bundle_name": "nemo-fastpitch-hifigan-en" },
+      "files": ["fastpitch.onnx", "hifigan.onnx", "symbols.json", "config.json"],
+      "prefixes": [],
+      "meta": {
+        "languages": "en",
+        "description": "Local-import ONNX bundle exported from NVIDIA NeMo models. Push via adb.",
+        "size_hint_mb": 0
+      }
+    }
+  ]
+}
+

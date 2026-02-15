@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Gradle / Android Studio
+**/.gradle/
+**/.kotlin/
+**/build/
+**/.idea/
+**/*.iml
+local.properties
+
+# Android artifacts
+**/*.apk
+**/*.aab
+**/*.ap_
+
+# Downloaded binary deps (use ./setup-deps.sh)
+VoicePingAndroidOfflineTtsEval/app/libs/*.aar
+
+# Benchmark artifacts (pulled results, generated reports, exported bundles)
+artifacts/
+
+# NeMo export venv
+scripts/nemo/.venv-nemo/
+
