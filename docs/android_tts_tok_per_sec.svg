@@ -1,38 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="386">
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="282">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="20" y="30" font-family="ui-sans-serif, system-ui" font-size="18" fill="#111827">Median tok/s (tokens = words)</text>
 <text x="20" y="50" font-family="ui-sans-serif, system-ui" font-size="12" fill="#6b7280">Unit: words/sec</text>
-<text x="20" y="73" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">matcha-en-us-ljspeech</text>
+<text x="20" y="73" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">android-system-tts</text>
 <rect x="260" y="60" width="780" height="18" rx="3" fill="#2563eb"/>
-<text x="1048" y="73" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">163.853</text>
+<text x="1048" y="73" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">42.476</text>
 <text x="20" y="99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">vits-piper-en-us-ryan-low</text>
-<rect x="260" y="86" width="606" height="18" rx="3" fill="#2563eb"/>
-<text x="874" y="99" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">127.483</text>
+<rect x="260" y="86" width="718" height="18" rx="3" fill="#2563eb"/>
+<text x="986" y="99" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">39.136</text>
 <text x="20" y="125" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">vits-piper-en-us-amy-low</text>
-<rect x="260" y="112" width="457" height="18" rx="3" fill="#2563eb"/>
-<text x="725" y="125" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">96.007</text>
-<text x="20" y="151" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">android-system-tts</text>
-<rect x="260" y="138" width="156" height="18" rx="3" fill="#2563eb"/>
-<text x="424" y="151" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">32.805</text>
-<text x="20" y="177" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">matcha-icefall-en-us-ljspeech-hifigan</text>
-<rect x="260" y="164" width="77" height="18" rx="3" fill="#2563eb"/>
-<text x="345" y="177" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">16.373</text>
-<text x="20" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-int8-multi-lang-v1_1</text>
-<rect x="260" y="190" width="76" height="18" rx="3" fill="#2563eb"/>
-<text x="344" y="203" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">16.131</text>
-<text x="20" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-en-v0_19</text>
-<rect x="260" y="216" width="57" height="18" rx="3" fill="#2563eb"/>
-<text x="325" y="229" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">12.127</text>
-<text x="20" y="255" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kitten-nano-en-v0-2-fp16</text>
-<rect x="260" y="242" width="24" height="18" rx="3" fill="#2563eb"/>
-<text x="292" y="255" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">5.177</text>
-<text x="20" y="281" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kitten-nano-en-v0_2-fp16</text>
-<rect x="260" y="268" width="24" height="18" rx="3" fill="#2563eb"/>
-<text x="292" y="281" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">5.131</text>
-<text x="20" y="307" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-en-v0-19</text>
-<rect x="260" y="294" width="11" height="18" rx="3" fill="#2563eb"/>
-<text x="279" y="307" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">2.372</text>
-<text x="20" y="333" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-int8-multi-lang-v1-1</text>
-<rect x="260" y="320" width="5" height="18" rx="3" fill="#2563eb"/>
-<text x="273" y="333" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">1.251</text>
+<rect x="260" y="112" width="613" height="18" rx="3" fill="#2563eb"/>
+<text x="881" y="125" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">33.389</text>
+<text x="20" y="151" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">matcha-icefall-en-us-ljspeech-hifigan</text>
+<rect x="260" y="138" width="300" height="18" rx="3" fill="#2563eb"/>
+<text x="568" y="151" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">16.373</text>
+<text x="20" y="177" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kitten-nano-en-v0-2-fp16</text>
+<rect x="260" y="164" width="95" height="18" rx="3" fill="#2563eb"/>
+<text x="363" y="177" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">5.177</text>
+<text x="20" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-en-v0-19</text>
+<rect x="260" y="190" width="43" height="18" rx="3" fill="#2563eb"/>
+<text x="311" y="203" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">2.372</text>
+<text x="20" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-int8-multi-lang-v1-1</text>
+<rect x="260" y="216" width="22" height="18" rx="3" fill="#2563eb"/>
+<text x="290" y="229" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">1.251</text>
 </svg>
