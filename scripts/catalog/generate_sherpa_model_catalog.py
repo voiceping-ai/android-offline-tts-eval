@@ -27,6 +27,7 @@ AUTHOR = "csukuangfj"
 SEARCH_TERMS = ["vits", "matcha", "kokoro", "kitten"]
 LIMIT = 1000
 REV = "main"
+OFFICIAL_COQUI_REPO = "vits-coqui-en-ljspeech"
 
 SCHEMA_VERSION = 1
 
@@ -377,6 +378,10 @@ def _classify_repo(repo_id: str, repo_name: str, files: Sequence[str]) -> List[D
 
     # VITS
     if "vits" in repo_name:
+        # Keep only one official Coqui model to avoid catalog bloat.
+        if repo_name.startswith("vits-coqui-") and repo_name != OFFICIAL_COQUI_REPO:
+            return []
+
         if not tokens:
             return []
         onnx = _pick_vits_onnx(root)
