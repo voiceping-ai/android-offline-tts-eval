@@ -2,118 +2,13 @@
   "schema_version": 1,
   "models": [
     {
-      "id": "kokoro-en-v0_19",
-      "display_name": "Kokoro EN (v0.19)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "kokoro",
-      "source": { "kind": "hf", "repo": "csukuangfj/kokoro-en-v0_19", "rev": "main" },
-      "files": ["model.onnx", "tokens.txt", "voices.bin"],
-      "prefixes": ["espeak-ng-data/"],
-      "meta": {
-        "languages": "en",
-        "description": "Kokoro TTS (English) via sherpa-onnx OfflineTts.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "kokoro-int8-multi-lang-v1_1",
-      "display_name": "Kokoro Multi-lang INT8 (v1.1)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "kokoro",
-      "source": { "kind": "hf", "repo": "csukuangfj/kokoro-int8-multi-lang-v1_1", "rev": "main" },
-      "files": [
-        "model.int8.onnx",
-        "tokens.txt",
-        "voices.bin",
-        "lexicon-us-en.txt",
-        "lexicon-gb-en.txt",
-        "lexicon-zh.txt",
-        "date-zh.fst"
-      ],
-      "prefixes": ["espeak-ng-data/", "dict/"],
-      "meta": {
-        "languages": "multi",
-        "description": "Kokoro multilingual INT8. Benchmark suite uses English prompts only.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "vits-piper-en-us-amy-low",
-      "display_name": "Piper VITS (en_US amy, low)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "vits",
-      "source": { "kind": "hf", "repo": "csukuangfj/vits-piper-en_US-amy-low", "rev": "main" },
-      "files": ["en_US-amy-low.onnx", "tokens.txt"],
-      "prefixes": ["espeak-ng-data/"],
-      "meta": {
-        "languages": "en",
-        "description": "Piper VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "vits-piper-en-us-ryan-low",
-      "display_name": "Piper VITS (en_US ryan, low)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "vits",
-      "source": { "kind": "hf", "repo": "csukuangfj/vits-piper-en_US-ryan-low", "rev": "main" },
-      "files": ["en_US-ryan-low.onnx", "tokens.txt"],
-      "prefixes": ["espeak-ng-data/"],
-      "meta": {
-        "languages": "en",
-        "description": "Piper VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "sherpa-hifigan-v3",
-      "display_name": "HiFiGAN Vocoder (v3)",
-      "engine": "asset_only",
-      "model_type": "vocoder",
-      "source": { "kind": "hf", "repo": "csukuangfj/sherpa-onnx-hifigan", "rev": "main" },
-      "files": ["hifigan_v3.onnx"],
-      "prefixes": [],
-      "meta": {
-        "languages": "n/a",
-        "description": "Vocoder dependency for Matcha models.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "matcha-en-us-ljspeech",
-      "display_name": "Matcha (en_US LJSpeech)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "matcha",
-      "source": { "kind": "hf", "repo": "csukuangfj/matcha-icefall-en_US-ljspeech", "rev": "main" },
-      "files": ["model-steps-3.onnx", "tokens.txt"],
-      "prefixes": ["espeak-ng-data/"],
-      "dependencies": ["sherpa-hifigan-v3"],
-      "meta": {
-        "languages": "en",
-        "description": "Matcha acoustic model + HiFiGAN vocoder.",
-        "size_hint_mb": 0
-      }
-    },
-    {
-      "id": "kitten-nano-en-v0_2-fp16",
-      "display_name": "Kitten Nano EN (v0.2 fp16)",
-      "engine": "sherpa_offline_tts",
-      "model_type": "kitten",
-      "source": { "kind": "hf", "repo": "csukuangfj/kitten-nano-en-v0_2-fp16", "rev": "main" },
-      "files": ["model.fp16.onnx", "tokens.txt", "voices.bin"],
-      "prefixes": ["espeak-ng-data/"],
-      "meta": {
-        "languages": "en",
-        "description": "Kitten TTS via sherpa-onnx OfflineTtsKittenModelConfig.",
-        "size_hint_mb": 0
-      }
-    },
-    {
       "id": "android-system-tts",
       "display_name": "Android System TTS",
       "engine": "android_system_tts",
       "model_type": "system",
-      "source": { "kind": "system" },
+      "source": {
+        "kind": "system"
+      },
       "files": [],
       "prefixes": [],
       "meta": {
@@ -127,15 +22,6364 @@
       "display_name": "NVIDIA NeMo FastPitch + HiFiGAN (EN)",
       "engine": "nemo_ort",
       "model_type": "nemo_fastpitch_hifigan",
-      "source": { "kind": "local_bundle", "bundle_name": "nemo-fastpitch-hifigan-en" },
-      "files": ["fastpitch.onnx", "hifigan.onnx", "symbols.json", "config.json"],
+      "source": {
+        "kind": "local_bundle",
+        "bundle_name": "nemo-fastpitch-hifigan-en"
+      },
+      "files": [
+        "fastpitch.onnx",
+        "hifigan.onnx",
+        "symbols.json",
+        "config.json"
+      ],
       "prefixes": [],
       "meta": {
         "languages": "en",
         "description": "Local-import ONNX bundle exported from NVIDIA NeMo models. Push via adb.",
         "size_hint_mb": 0
       }
+    },
+    {
+      "id": "sherpa-espeak-ng-data",
+      "display_name": "espeak-ng-data (shared)",
+      "engine": "asset_only",
+      "model_type": "asset",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-amy-low",
+        "rev": "main"
+      },
+      "files": [],
+      "prefixes": [
+        "espeak-ng-data/"
+      ],
+      "meta": {
+        "languages": "n/a",
+        "description": "Shared espeak-ng-data directory used by many sherpa-onnx TTS models.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "sherpa-hifigan-v3",
+      "display_name": "HiFiGAN Vocoder (v3)",
+      "engine": "asset_only",
+      "model_type": "vocoder",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/sherpa-onnx-hifigan",
+        "rev": "main"
+      },
+      "files": [
+        "hifigan_v3.onnx"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "n/a",
+        "description": "Vocoder dependency for Matcha models.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "sherpa-vocos-22khz-univ",
+      "display_name": "Vocos Vocoder (22kHz univ)",
+      "engine": "asset_only",
+      "model_type": "vocoder",
+      "source": {
+        "kind": "hf",
+        "repo": "k2-fsa/sherpa-onnx-models",
+        "rev": "main"
+      },
+      "files": [
+        "vocoder-models/vocos-22khz-univ.onnx"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "n/a",
+        "description": "Vocoder dependency for Matcha (Vocos) models.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kitten-mini-en-v0-1-fp16",
+      "display_name": "Kitten (mini-en-v0_1-fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kitten",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kitten-mini-en-v0_1-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "model.fp16.onnx",
+        "tokens.txt",
+        "voices.bin"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "Kitten TTS via sherpa-onnx OfflineTtsKittenModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kitten-nano-en-v0-1-fp16",
+      "display_name": "Kitten (nano-en-v0_1-fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kitten",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kitten-nano-en-v0_1-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "model.fp16.onnx",
+        "tokens.txt",
+        "voices.bin"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "Kitten TTS via sherpa-onnx OfflineTtsKittenModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kitten-nano-en-v0-2-fp16",
+      "display_name": "Kitten (nano-en-v0_2-fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kitten",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kitten-nano-en-v0_2-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "model.fp16.onnx",
+        "tokens.txt",
+        "voices.bin"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "Kitten TTS via sherpa-onnx OfflineTtsKittenModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-en-v0-19",
+      "display_name": "Kokoro (en-v0_19)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kokoro-en-v0_19",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt",
+        "voices.bin"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "Kokoro TTS via sherpa-onnx OfflineTtsKokoroModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-int8-multi-lang-v1-0",
+      "display_name": "Kokoro (int8-multi-lang-v1_0)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kokoro-int8-multi-lang-v1_0",
+        "rev": "main"
+      },
+      "files": [
+        "model.int8.onnx",
+        "tokens.txt",
+        "voices.bin",
+        "lexicon-gb-en.txt",
+        "lexicon-us-en.txt",
+        "lexicon-zh.txt",
+        "date-zh.fst",
+        "number-zh.fst",
+        "phone-zh.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "unknown",
+        "description": "Kokoro TTS via sherpa-onnx OfflineTtsKokoroModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-int8-multi-lang-v1-1",
+      "display_name": "Kokoro (int8-multi-lang-v1_1)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kokoro-int8-multi-lang-v1_1",
+        "rev": "main"
+      },
+      "files": [
+        "model.int8.onnx",
+        "tokens.txt",
+        "voices.bin",
+        "lexicon-gb-en.txt",
+        "lexicon-us-en.txt",
+        "lexicon-zh.txt",
+        "date-zh.fst",
+        "number-zh.fst",
+        "phone-zh.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "unknown",
+        "description": "Kokoro TTS via sherpa-onnx OfflineTtsKokoroModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-multi-lang-v1-0",
+      "display_name": "Kokoro (multi-lang-v1_0)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kokoro-multi-lang-v1_0",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt",
+        "voices.bin",
+        "lexicon-gb-en.txt",
+        "lexicon-us-en.txt",
+        "lexicon-zh.txt",
+        "date-zh.fst",
+        "number-zh.fst",
+        "phone-zh.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "unknown",
+        "description": "Kokoro TTS via sherpa-onnx OfflineTtsKokoroModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "kokoro-multi-lang-v1-1",
+      "display_name": "Kokoro (multi-lang-v1_1)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "kokoro",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/kokoro-multi-lang-v1_1",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt",
+        "voices.bin",
+        "lexicon-gb-en.txt",
+        "lexicon-us-en.txt",
+        "lexicon-zh.txt",
+        "date-zh.fst",
+        "number-zh.fst",
+        "phone-zh.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "unknown",
+        "description": "Kokoro TTS via sherpa-onnx OfflineTtsKokoroModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-en-us-ljspeech-hifigan",
+      "display_name": "Matcha (icefall-en_US-ljspeech) + HiFiGAN",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-en_US-ljspeech",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-hifigan-v3",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-en-us-ljspeech-vocos",
+      "display_name": "Matcha (icefall-en_US-ljspeech) + Vocos",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-en_US-ljspeech",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-vocos-22khz-univ",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-zh-baker-hifigan",
+      "display_name": "Matcha (icefall-zh-baker) + HiFiGAN",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-zh-baker",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-hifigan-v3"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-zh-baker-vocos",
+      "display_name": "Matcha (icefall-zh-baker) + Vocos",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-zh-baker",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "dependencies": [
+        "sherpa-vocos-22khz-univ"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-zh-en-hifigan",
+      "display_name": "Matcha (icefall-zh-en) + HiFiGAN",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-zh-en",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-hifigan-v3",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-icefall-zh-en-vocos",
+      "display_name": "Matcha (icefall-zh-en) + Vocos",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-icefall-zh-en",
+        "rev": "main"
+      },
+      "files": [
+        "model-steps-3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-vocos-22khz-univ",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-tts-fa-en-khadijah-hifigan",
+      "display_name": "Matcha (tts-fa_en-khadijah) + HiFiGAN",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-tts-fa_en-khadijah",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-hifigan-v3",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_en",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-tts-fa-en-khadijah-vocos",
+      "display_name": "Matcha (tts-fa_en-khadijah) + Vocos",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-tts-fa_en-khadijah",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-vocos-22khz-univ",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_en",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-tts-fa-en-musa-hifigan",
+      "display_name": "Matcha (tts-fa_en-musa) + HiFiGAN",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-tts-fa_en-musa",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-hifigan-v3",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_en",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "matcha-tts-fa-en-musa-vocos",
+      "display_name": "Matcha (tts-fa_en-musa) + Vocos",
+      "engine": "sherpa_offline_tts",
+      "model_type": "matcha",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/matcha-tts-fa_en-musa",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-vocos-22khz-univ",
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_en",
+        "description": "Matcha acoustic model via sherpa-onnx OfflineTtsMatchaModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "sherpa-onnx-vits-zh-ll",
+      "display_name": "VITS (sherpa-onnx-vits-zh-ll)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/sherpa-onnx-vits-zh-ll",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-cantonese-hf-xiaomaiiwn",
+      "display_name": "VITS (vits-cantonese-hf-xiaomaiiwn)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-cantonese-hf-xiaomaiiwn",
+        "rev": "main"
+      },
+      "files": [
+        "vits-cantonese-hf-xiaomaiiwn.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "rule.fst"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "hf",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-bg-cv",
+      "display_name": "Coqui VITS (bg-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-bg-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "bg",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-bn-custom-female",
+      "display_name": "Coqui VITS (bn-custom_female)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-bn-custom_female",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "bn",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-cs-cv",
+      "display_name": "Coqui VITS (cs-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-cs-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "cs",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-da-cv",
+      "display_name": "Coqui VITS (da-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-da-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "da",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-de-css10",
+      "display_name": "Coqui VITS (de-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-de-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "de",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-en-ljspeech",
+      "display_name": "Coqui VITS (en-ljspeech)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-en-ljspeech",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-en-ljspeech-neon",
+      "display_name": "Coqui VITS (en-ljspeech-neon)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-en-ljspeech-neon",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-en-vctk",
+      "display_name": "Coqui VITS (en-vctk)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-en-vctk",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-es-css10",
+      "display_name": "Coqui VITS (es-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-es-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "es",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-et-cv",
+      "display_name": "Coqui VITS (et-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-et-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "et",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-fi-css10",
+      "display_name": "Coqui VITS (fi-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-fi-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "fi",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-fr-css10",
+      "display_name": "Coqui VITS (fr-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-fr-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "fr",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-ga-cv",
+      "display_name": "Coqui VITS (ga-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-ga-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "ga",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-hr-cv",
+      "display_name": "Coqui VITS (hr-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-hr-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "hr",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-hu-css10",
+      "display_name": "Coqui VITS (hu-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-hu-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "hu",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-lt-cv",
+      "display_name": "Coqui VITS (lt-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-lt-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "lt",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-lv-cv",
+      "display_name": "Coqui VITS (lv-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-lv-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "lv",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-mt-cv",
+      "display_name": "Coqui VITS (mt-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-mt-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "mt",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-nl-css10",
+      "display_name": "Coqui VITS (nl-css10)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-nl-css10",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "nl",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-pl-mai-female",
+      "display_name": "Coqui VITS (pl-mai_female)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-pl-mai_female",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "pl",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-pt-cv",
+      "display_name": "Coqui VITS (pt-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-pt-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "pt",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-ro-cv",
+      "display_name": "Coqui VITS (ro-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-ro-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "ro",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-sk-cv",
+      "display_name": "Coqui VITS (sk-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-sk-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "sk",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-sl-cv",
+      "display_name": "Coqui VITS (sl-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-sl-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "sl",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-sv-cv",
+      "display_name": "Coqui VITS (sv-cv)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-sv-cv",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "sv",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-coqui-uk-mai",
+      "display_name": "Coqui VITS (uk-mai)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-coqui-uk-mai",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "uk",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-hf-zh-jp-zomehwh",
+      "display_name": "VITS (vits-hf-zh-jp-zomehwh)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-hf-zh-jp-zomehwh",
+        "rev": "main"
+      },
+      "files": [
+        "vits-hf-zh-jp-zomehwh.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "hf",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-melo-tts-en",
+      "display_name": "VITS (vits-melo-tts-en)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-melo-tts-en",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt",
+        "lexicon.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-melo-tts-zh-en",
+      "display_name": "VITS (vits-melo-tts-zh_en)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-melo-tts-zh_en",
+        "rev": "main"
+      },
+      "files": [
+        "model.int8.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh_en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-af-za-google-nwu-low",
+      "display_name": "Mimic3 VITS (af_ZA-google-nwu_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-af_ZA-google-nwu_low",
+        "rev": "main"
+      },
+      "files": [
+        "af_ZA-google-nwu_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "af_ZA",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-bn-multi-low",
+      "display_name": "Mimic3 VITS (bn-multi_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-bn-multi_low",
+        "rev": "main"
+      },
+      "files": [
+        "bn-multi_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "bn",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-el-gr-rapunzelina-low",
+      "display_name": "Mimic3 VITS (el_GR-rapunzelina_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-el_GR-rapunzelina_low",
+        "rev": "main"
+      },
+      "files": [
+        "el_GR-rapunzelina_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "el_GR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-es-es-m-ailabs-low",
+      "display_name": "Mimic3 VITS (es_ES-m-ailabs_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-es_ES-m-ailabs_low",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-m-ailabs_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-fa-haaniye-low",
+      "display_name": "Mimic3 VITS (fa-haaniye_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-fa-haaniye_low",
+        "rev": "main"
+      },
+      "files": [
+        "fa-haaniye_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-fi-fi-harri-tapani-ylilammi-low",
+      "display_name": "Mimic3 VITS (fi_FI-harri-tapani-ylilammi_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-fi_FI-harri-tapani-ylilammi_low",
+        "rev": "main"
+      },
+      "files": [
+        "fi_FI-harri-tapani-ylilammi_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fi_FI",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-gu-in-cmu-indic-low",
+      "display_name": "Mimic3 VITS (gu_IN-cmu-indic_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-gu_IN-cmu-indic_low",
+        "rev": "main"
+      },
+      "files": [
+        "gu_IN-cmu-indic_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "gu_IN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-hu-hu-diana-majlinger-low",
+      "display_name": "Mimic3 VITS (hu_HU-diana-majlinger_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-hu_HU-diana-majlinger_low",
+        "rev": "main"
+      },
+      "files": [
+        "hu_HU-diana-majlinger_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hu_HU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-ko-ko-kss-low",
+      "display_name": "Mimic3 VITS (ko_KO-kss_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-ko_KO-kss_low",
+        "rev": "main"
+      },
+      "files": [
+        "ko_KO-kss_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ko_KO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-ne-np-ne-google-low",
+      "display_name": "Mimic3 VITS (ne_NP-ne-google_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-ne_NP-ne-google_low",
+        "rev": "main"
+      },
+      "files": [
+        "ne_NP-ne-google_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ne_NP",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-pl-pl-m-ailabs-low",
+      "display_name": "Mimic3 VITS (pl_PL-m-ailabs_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-pl_PL-m-ailabs_low",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-m-ailabs_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-tn-za-google-nwu-low",
+      "display_name": "Mimic3 VITS (tn_ZA-google-nwu_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-tn_ZA-google-nwu_low",
+        "rev": "main"
+      },
+      "files": [
+        "tn_ZA-google-nwu_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "tn_ZA",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mimic3-vi-vn-vais1000-low",
+      "display_name": "Mimic3 VITS (vi_VN-vais1000_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mimic3-vi_VN-vais1000_low",
+        "rev": "main"
+      },
+      "files": [
+        "vi_VN-vais1000_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "vi_VN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-deu",
+      "display_name": "VITS (vits-mms-deu)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-deu",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-eng",
+      "display_name": "VITS (vits-mms-eng)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-eng",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-fra",
+      "display_name": "VITS (vits-mms-fra)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-fra",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-nan",
+      "display_name": "VITS (vits-mms-nan)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-nan",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-rus",
+      "display_name": "VITS (vits-mms-rus)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-rus",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-spa",
+      "display_name": "VITS (vits-mms-spa)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-spa",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-tha",
+      "display_name": "VITS (vits-mms-tha)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-tha",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-mms-ukr",
+      "display_name": "VITS (vits-mms-ukr)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-mms-ukr",
+        "rev": "main"
+      },
+      "files": [
+        "model.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "unknown",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-kareem-low",
+      "display_name": "Piper VITS (ar-JO kareem low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-kareem-low",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-kareem-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-kareem-medium",
+      "display_name": "Piper VITS (ar-JO kareem medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-kareem-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-kareem-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-dii-high",
+      "display_name": "Piper VITS (ar-JO SA_dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-dii-high-fp16",
+      "display_name": "Piper VITS (ar-JO SA_dii high fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_dii-high-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-dii-high-int8",
+      "display_name": "Piper VITS (ar-JO SA_dii high int8)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_dii-high-int8",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-high",
+      "display_name": "Piper VITS (ar-JO SA_miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-high-fp16",
+      "display_name": "Piper VITS (ar-JO SA_miro high fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro-high-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-high-int8",
+      "display_name": "Piper VITS (ar-JO SA_miro high int8)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro-high-int8",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-v2-high",
+      "display_name": "Piper VITS (ar-JO SA_miro_V2 high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro_V2-high",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro_V2-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-v2-high-fp16",
+      "display_name": "Piper VITS (ar-JO SA_miro_V2 high fp16)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro_V2-high-fp16",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro_V2-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ar-jo-sa-miro-v2-high-int8",
+      "display_name": "Piper VITS (ar-JO SA_miro_V2 high int8)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ar_JO-SA_miro_V2-high-int8",
+        "rev": "main"
+      },
+      "files": [
+        "ar_JO-SA_miro_V2-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ar_JO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ca-es-upc-ona-medium",
+      "display_name": "Piper VITS (ca-ES upc_ona medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ca_ES-upc_ona-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ca_ES-upc_ona-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ca_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ca-es-upc-ona-x-low",
+      "display_name": "Piper VITS (ca-ES upc_ona x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ca_ES-upc_ona-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "ca_ES-upc_ona-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ca_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ca-es-upc-pau-x-low",
+      "display_name": "Piper VITS (ca-ES upc_pau x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ca_ES-upc_pau-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "ca_ES-upc_pau-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ca_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-cs-cz-jirka-low",
+      "display_name": "Piper VITS (cs-CZ jirka low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-cs_CZ-jirka-low",
+        "rev": "main"
+      },
+      "files": [
+        "cs_CZ-jirka-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "cs_CZ",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-cs-cz-jirka-medium",
+      "display_name": "Piper VITS (cs-CZ jirka medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-cs_CZ-jirka-medium",
+        "rev": "main"
+      },
+      "files": [
+        "cs_CZ-jirka-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "cs_CZ",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-cy-gb-gwryw-gogleddol-medium",
+      "display_name": "Piper VITS (cy-GB gwryw_gogleddol medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-cy_GB-gwryw_gogleddol-medium",
+        "rev": "main"
+      },
+      "files": [
+        "cy_GB-gwryw_gogleddol-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "cy_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-da-dk-talesyntese-medium",
+      "display_name": "Piper VITS (da-DK talesyntese medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-da_DK-talesyntese-medium",
+        "rev": "main"
+      },
+      "files": [
+        "da_DK-talesyntese-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "da_DK",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-dii-high",
+      "display_name": "Piper VITS (de-DE dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-eva-k-x-low",
+      "display_name": "Piper VITS (de-DE eva_k x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-eva_k-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-eva_k-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-high",
+      "display_name": "Piper VITS (de-DE glados high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados-high",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-low",
+      "display_name": "Piper VITS (de-DE glados low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-medium",
+      "display_name": "Piper VITS (de-DE glados medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados-medium",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-turret-high",
+      "display_name": "Piper VITS (de-DE glados_turret high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados_turret-high",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados_turret-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-turret-low",
+      "display_name": "Piper VITS (de-DE glados_turret low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados_turret-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados_turret-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-glados-turret-medium",
+      "display_name": "Piper VITS (de-DE glados_turret medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-glados_turret-medium",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-glados_turret-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-karlsson-low",
+      "display_name": "Piper VITS (de-DE karlsson low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-karlsson-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-karlsson-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-kerstin-low",
+      "display_name": "Piper VITS (de-DE kerstin low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-kerstin-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-kerstin-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-miro-high",
+      "display_name": "Piper VITS (de-DE miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-mls-medium",
+      "display_name": "Piper VITS (de-DE mls medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-mls-medium",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-mls-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-pavoque-low",
+      "display_name": "Piper VITS (de-DE pavoque low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-pavoque-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-pavoque-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-ramona-low",
+      "display_name": "Piper VITS (de-DE ramona low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-ramona-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-ramona-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-thorsten-emotional-medium",
+      "display_name": "Piper VITS (de-DE thorsten_emotional medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-thorsten_emotional-medium",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-thorsten_emotional-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-thorsten-high",
+      "display_name": "Piper VITS (de-DE thorsten high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-thorsten-high",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-thorsten-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-thorsten-low",
+      "display_name": "Piper VITS (de-DE thorsten low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-thorsten-low",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-thorsten-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-de-de-thorsten-medium",
+      "display_name": "Piper VITS (de-DE thorsten medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-de_DE-thorsten-medium",
+        "rev": "main"
+      },
+      "files": [
+        "de_DE-thorsten-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "de_DE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-el-gr-rapunzelina-low",
+      "display_name": "Piper VITS (el-GR rapunzelina low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-el_GR-rapunzelina-low",
+        "rev": "main"
+      },
+      "files": [
+        "el_GR-rapunzelina-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "el_GR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-alan-low",
+      "display_name": "Piper VITS (en-GB alan low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-alan-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-alan-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-alan-medium",
+      "display_name": "Piper VITS (en-GB alan medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-alan-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-alan-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-alba-medium",
+      "display_name": "Piper VITS (en-GB alba medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-alba-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-alba-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-aru-medium",
+      "display_name": "Piper VITS (en-GB aru medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-aru-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-aru-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-cori-high",
+      "display_name": "Piper VITS (en-GB cori high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-cori-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-cori-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-cori-medium",
+      "display_name": "Piper VITS (en-GB cori medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-cori-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-cori-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-dii-high",
+      "display_name": "Piper VITS (en-GB dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-jenny-dioco-medium",
+      "display_name": "Piper VITS (en-GB jenny_dioco medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-jenny_dioco-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-jenny_dioco-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-miro-high",
+      "display_name": "Piper VITS (en-GB miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-northern-english-male-medium",
+      "display_name": "Piper VITS (en-GB northern_english_male medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-northern_english_male-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-northern_english_male-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-semaine-medium",
+      "display_name": "Piper VITS (en-GB semaine medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-semaine-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-semaine-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-southern-english-female-low",
+      "display_name": "Piper VITS (en-GB southern_english_female low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-southern_english_female-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-southern_english_female-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-southern-english-female-medium",
+      "display_name": "Piper VITS (en-GB southern_english_female medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-southern_english_female-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-southern_english_female-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-southern-english-male-medium",
+      "display_name": "Piper VITS (en-GB southern_english_male medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-southern_english_male-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-southern_english_male-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-sweetbbak-amy",
+      "display_name": "Piper VITS (en-GB sweetbbak amy)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-sweetbbak-amy",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-sweetbbak-amy.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-gb-vctk-medium",
+      "display_name": "Piper VITS (en-GB vctk medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_GB-vctk-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_GB-vctk-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_GB",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-amy-low",
+      "display_name": "Piper VITS (en-US amy low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-amy-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-amy-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-amy-medium",
+      "display_name": "Piper VITS (en-US amy medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-amy-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-amy-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-arctic-medium",
+      "display_name": "Piper VITS (en-US arctic medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-arctic-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-arctic-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-bryce-medium",
+      "display_name": "Piper VITS (en-US bryce medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-bryce-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-bryce-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-danny-low",
+      "display_name": "Piper VITS (en-US danny low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-danny-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-danny-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-glados",
+      "display_name": "Piper VITS (en-US glados)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-glados",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-glados.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-glados-high",
+      "display_name": "Piper VITS (en-US glados high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-glados-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-glados-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-hfc-female-medium",
+      "display_name": "Piper VITS (en-US hfc_female medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-hfc_female-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-hfc_female-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-hfc-male-medium",
+      "display_name": "Piper VITS (en-US hfc_male medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-hfc_male-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-hfc_male-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-joe-medium",
+      "display_name": "Piper VITS (en-US joe medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-joe-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-joe-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-john-medium",
+      "display_name": "Piper VITS (en-US john medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-john-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-john-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-kathleen-low",
+      "display_name": "Piper VITS (en-US kathleen low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-kathleen-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-kathleen-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-kristin-medium",
+      "display_name": "Piper VITS (en-US kristin medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-kristin-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-kristin-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-kusal-medium",
+      "display_name": "Piper VITS (en-US kusal medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-kusal-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-kusal-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-l2arctic-medium",
+      "display_name": "Piper VITS (en-US l2arctic medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-l2arctic-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-l2arctic-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-lessac-high",
+      "display_name": "Piper VITS (en-US lessac high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-lessac-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-lessac-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-lessac-low",
+      "display_name": "Piper VITS (en-US lessac low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-lessac-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-lessac-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-lessac-medium",
+      "display_name": "Piper VITS (en-US lessac medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-lessac-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-lessac-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-libritts-high",
+      "display_name": "Piper VITS (en-US libritts high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-libritts-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-libritts-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-libritts-r-medium",
+      "display_name": "Piper VITS (en-US libritts_r medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-libritts_r-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-libritts_r-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ljspeech-high",
+      "display_name": "Piper VITS (en-US ljspeech high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-ljspeech-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-ljspeech-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ljspeech-medium",
+      "display_name": "Piper VITS (en-US ljspeech medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-ljspeech-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-ljspeech-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-miro-high",
+      "display_name": "Piper VITS (en-US miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-norman-medium",
+      "display_name": "Piper VITS (en-US norman medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-norman-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-norman-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ryan-high",
+      "display_name": "Piper VITS (en-US ryan high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-ryan-high",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-ryan-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ryan-low",
+      "display_name": "Piper VITS (en-US ryan low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-ryan-low",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-ryan-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-en-us-ryan-medium",
+      "display_name": "Piper VITS (en-US ryan medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-en_US-ryan-medium",
+        "rev": "main"
+      },
+      "files": [
+        "en_US-ryan-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "en_US",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-ar-daniela-high",
+      "display_name": "Piper VITS (es-AR daniela high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_AR-daniela-high",
+        "rev": "main"
+      },
+      "files": [
+        "es_AR-daniela-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_AR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-carlfm-x-low",
+      "display_name": "Piper VITS (es-ES carlfm x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-carlfm-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-carlfm-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-davefx-medium",
+      "display_name": "Piper VITS (es-ES davefx medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-davefx-medium",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-davefx-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-glados-medium",
+      "display_name": "Piper VITS (es-ES glados medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-glados-medium",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-glados-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-miro-high",
+      "display_name": "Piper VITS (es-ES miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-mls-10246-low",
+      "display_name": "Piper VITS (es-ES mls_10246 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-mls_10246-low",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-mls_10246-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-mls-9972-low",
+      "display_name": "Piper VITS (es-ES mls_9972 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-mls_9972-low",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-mls_9972-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-es-sharvard-medium",
+      "display_name": "Piper VITS (es-ES sharvard medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_ES-sharvard-medium",
+        "rev": "main"
+      },
+      "files": [
+        "es_ES-sharvard-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_ES",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-mx-ald-medium",
+      "display_name": "Piper VITS (es-MX ald medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_MX-ald-medium",
+        "rev": "main"
+      },
+      "files": [
+        "es_MX-ald-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_MX",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-es-mx-claude-high",
+      "display_name": "Piper VITS (es-MX claude high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-es_MX-claude-high",
+        "rev": "main"
+      },
+      "files": [
+        "es_MX-claude-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "es_MX",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-en-rezahedayatfar-ibrahimwalk-medium",
+      "display_name": "Piper VITS (fa-en rezahedayatfar ibrahimwalk medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_en-rezahedayatfar-ibrahimwalk-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_en-rezahedayatfar-ibrahimwalk-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_en",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-haaniye-low",
+      "display_name": "Piper VITS (fa haaniye_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa-haaniye_low",
+        "rev": "main"
+      },
+      "files": [
+        "fa-haaniye_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-ir-amir-medium",
+      "display_name": "Piper VITS (fa-IR amir medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_IR-amir-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_IR-amir-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_IR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-ir-ganji-adabi-medium",
+      "display_name": "Piper VITS (fa-IR ganji_adabi medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_IR-ganji_adabi-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_IR-ganji_adabi-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_IR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-ir-ganji-medium",
+      "display_name": "Piper VITS (fa-IR ganji medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_IR-ganji-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_IR-ganji-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_IR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-ir-gyro-medium",
+      "display_name": "Piper VITS (fa-IR gyro medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_IR-gyro-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_IR-gyro-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_IR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fa-ir-reza-ibrahim-medium",
+      "display_name": "Piper VITS (fa-IR reza_ibrahim medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fa_IR-reza_ibrahim-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fa_IR-reza_ibrahim-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fa_IR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fi-fi-harri-low",
+      "display_name": "Piper VITS (fi-FI harri low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fi_FI-harri-low",
+        "rev": "main"
+      },
+      "files": [
+        "fi_FI-harri-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fi_FI",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fi-fi-harri-medium",
+      "display_name": "Piper VITS (fi-FI harri medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fi_FI-harri-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fi_FI-harri-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fi_FI",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-gilles-low",
+      "display_name": "Piper VITS (fr-FR gilles low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-gilles-low",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-gilles-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-miro-high",
+      "display_name": "Piper VITS (fr-FR miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-mls-1840-low",
+      "display_name": "Piper VITS (fr-FR mls_1840 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-mls_1840-low",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-mls_1840-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-mls-medium",
+      "display_name": "Piper VITS (fr-FR mls medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-mls-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-mls-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-siwis-low",
+      "display_name": "Piper VITS (fr-FR siwis low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-siwis-low",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-siwis-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-siwis-medium",
+      "display_name": "Piper VITS (fr-FR siwis medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-siwis-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-siwis-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-tjiho-model1",
+      "display_name": "Piper VITS (fr-FR tjiho model1)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-tjiho-model1",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-tjiho-model1.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-tjiho-model2",
+      "display_name": "Piper VITS (fr-FR tjiho model2)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-tjiho-model2",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-tjiho-model2.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-tjiho-model3",
+      "display_name": "Piper VITS (fr-FR tjiho model3)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-tjiho-model3",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-tjiho-model3.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-tom-medium",
+      "display_name": "Piper VITS (fr-FR tom medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-tom-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-tom-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-fr-fr-upmc-medium",
+      "display_name": "Piper VITS (fr-FR upmc medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-fr_FR-upmc-medium",
+        "rev": "main"
+      },
+      "files": [
+        "fr_FR-upmc-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "fr_FR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hi-in-pratham-medium",
+      "display_name": "Piper VITS (hi-IN pratham medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hi_IN-pratham-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hi_IN-pratham-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hi_IN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hi-in-priyamvada-medium",
+      "display_name": "Piper VITS (hi-IN priyamvada medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hi_IN-priyamvada-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hi_IN-priyamvada-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hi_IN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hi-in-rohan-medium",
+      "display_name": "Piper VITS (hi-IN rohan medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hi_IN-rohan-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hi_IN-rohan-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hi_IN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hu-hu-anna-medium",
+      "display_name": "Piper VITS (hu-HU anna medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hu_HU-anna-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hu_HU-anna-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hu_HU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hu-hu-berta-medium",
+      "display_name": "Piper VITS (hu-HU berta medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hu_HU-berta-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hu_HU-berta-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hu_HU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-hu-hu-imre-medium",
+      "display_name": "Piper VITS (hu-HU imre medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-hu_HU-imre-medium",
+        "rev": "main"
+      },
+      "files": [
+        "hu_HU-imre-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "hu_HU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-id-id-news-tts-medium",
+      "display_name": "Piper VITS (id-ID news_tts medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-id_ID-news_tts-medium",
+        "rev": "main"
+      },
+      "files": [
+        "id_ID-news_tts-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "id_ID",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-is-is-bui-medium",
+      "display_name": "Piper VITS (is-IS bui medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-is_IS-bui-medium",
+        "rev": "main"
+      },
+      "files": [
+        "is_IS-bui-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "is_IS",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-is-is-salka-medium",
+      "display_name": "Piper VITS (is-IS salka medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-is_IS-salka-medium",
+        "rev": "main"
+      },
+      "files": [
+        "is_IS-salka-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "is_IS",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-is-is-steinn-medium",
+      "display_name": "Piper VITS (is-IS steinn medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-is_IS-steinn-medium",
+        "rev": "main"
+      },
+      "files": [
+        "is_IS-steinn-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "is_IS",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-is-is-ugla-medium",
+      "display_name": "Piper VITS (is-IS ugla medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-is_IS-ugla-medium",
+        "rev": "main"
+      },
+      "files": [
+        "is_IS-ugla-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "is_IS",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-it-it-dii-high",
+      "display_name": "Piper VITS (it-IT dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-it_IT-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "it_IT-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "it_IT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-it-it-miro-high",
+      "display_name": "Piper VITS (it-IT miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-it_IT-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "it_IT-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "it_IT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-it-it-paola-medium",
+      "display_name": "Piper VITS (it-IT paola medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-it_IT-paola-medium",
+        "rev": "main"
+      },
+      "files": [
+        "it_IT-paola-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "it_IT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-it-it-riccardo-x-low",
+      "display_name": "Piper VITS (it-IT riccardo x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-it_IT-riccardo-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "it_IT-riccardo-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "it_IT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ka-ge-natia-medium",
+      "display_name": "Piper VITS (ka-GE natia medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ka_GE-natia-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ka_GE-natia-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ka_GE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-kk-kz-iseke-x-low",
+      "display_name": "Piper VITS (kk-KZ iseke x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-kk_KZ-iseke-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "kk_KZ-iseke-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "kk_KZ",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-kk-kz-issai-high",
+      "display_name": "Piper VITS (kk-KZ issai high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-kk_KZ-issai-high",
+        "rev": "main"
+      },
+      "files": [
+        "kk_KZ-issai-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "kk_KZ",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-kk-kz-raya-x-low",
+      "display_name": "Piper VITS (kk-KZ raya x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-kk_KZ-raya-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "kk_KZ-raya-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "kk_KZ",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-lb-lu-marylux-medium",
+      "display_name": "Piper VITS (lb-LU marylux medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-lb_LU-marylux-medium",
+        "rev": "main"
+      },
+      "files": [
+        "lb_LU-marylux-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "lb_LU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-lv-lv-aivars-medium",
+      "display_name": "Piper VITS (lv-LV aivars medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-lv_LV-aivars-medium",
+        "rev": "main"
+      },
+      "files": [
+        "lv_LV-aivars-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "lv_LV",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ne-np-google-medium",
+      "display_name": "Piper VITS (ne-NP google medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ne_NP-google-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ne_NP-google-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ne_NP",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ne-np-google-x-low",
+      "display_name": "Piper VITS (ne-NP google x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ne_NP-google-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "ne_NP-google-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ne_NP",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-be-nathalie-medium",
+      "display_name": "Piper VITS (nl-BE nathalie medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_BE-nathalie-medium",
+        "rev": "main"
+      },
+      "files": [
+        "nl_BE-nathalie-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_BE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-be-nathalie-x-low",
+      "display_name": "Piper VITS (nl-BE nathalie x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_BE-nathalie-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "nl_BE-nathalie-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_BE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-be-rdh-medium",
+      "display_name": "Piper VITS (nl-BE rdh medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_BE-rdh-medium",
+        "rev": "main"
+      },
+      "files": [
+        "nl_BE-rdh-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_BE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-be-rdh-x-low",
+      "display_name": "Piper VITS (nl-BE rdh x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_BE-rdh-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "nl_BE-rdh-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_BE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-nl-dii-high",
+      "display_name": "Piper VITS (nl-NL dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_NL-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "nl_NL-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_NL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-nl-miro-high",
+      "display_name": "Piper VITS (nl-NL miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_NL-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "nl_NL-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_NL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-nl-mls-5809-low",
+      "display_name": "Piper VITS (nl-NL mls_5809 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_NL-mls_5809-low",
+        "rev": "main"
+      },
+      "files": [
+        "nl_NL-mls_5809-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_NL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-nl-mls-7432-low",
+      "display_name": "Piper VITS (nl-NL mls_7432 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_NL-mls_7432-low",
+        "rev": "main"
+      },
+      "files": [
+        "nl_NL-mls_7432-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_NL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-nl-nl-mls-medium",
+      "display_name": "Piper VITS (nl-NL mls medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-nl_NL-mls-medium",
+        "rev": "main"
+      },
+      "files": [
+        "nl_NL-mls-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "nl_NL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-no-no-talesyntese-medium",
+      "display_name": "Piper VITS (no-NO talesyntese medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-no_NO-talesyntese-medium",
+        "rev": "main"
+      },
+      "files": [
+        "no_NO-talesyntese-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "no_NO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-darkman-medium",
+      "display_name": "Piper VITS (pl-PL darkman medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-darkman-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-darkman-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-gosia-medium",
+      "display_name": "Piper VITS (pl-PL gosia medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-gosia-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-gosia-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-jarvis-wg-glos-medium",
+      "display_name": "Piper VITS (pl-PL jarvis_wg_glos medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-jarvis_wg_glos-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-jarvis_wg_glos-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-justyna-wg-glos-medium",
+      "display_name": "Piper VITS (pl-PL justyna_wg_glos medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-justyna_wg_glos-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-justyna_wg_glos-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-mc-speech-medium",
+      "display_name": "Piper VITS (pl-PL mc_speech medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-mc_speech-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-mc_speech-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-meski-wg-glos-medium",
+      "display_name": "Piper VITS (pl-PL meski_wg_glos medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-meski_wg_glos-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-meski_wg_glos-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-mls-6892-low",
+      "display_name": "Piper VITS (pl-PL mls_6892 low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-mls_6892-low",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-mls_6892-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pl-pl-zenski-wg-glos-medium",
+      "display_name": "Piper VITS (pl-PL zenski_wg_glos medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pl_PL-zenski_wg_glos-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pl_PL-zenski_wg_glos-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pl_PL",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-br-dii-high",
+      "display_name": "Piper VITS (pt-BR dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_BR-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "pt_BR-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_BR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-br-edresson-low",
+      "display_name": "Piper VITS (pt-BR edresson low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_BR-edresson-low",
+        "rev": "main"
+      },
+      "files": [
+        "pt_BR-edresson-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_BR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-br-faber-medium",
+      "display_name": "Piper VITS (pt-BR faber medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_BR-faber-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pt_BR-faber-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_BR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-br-miro-high",
+      "display_name": "Piper VITS (pt-BR miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_BR-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "pt_BR-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_BR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-pt-dii-high",
+      "display_name": "Piper VITS (pt-PT dii high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_PT-dii-high",
+        "rev": "main"
+      },
+      "files": [
+        "pt_PT-dii-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_PT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-pt-miro-high",
+      "display_name": "Piper VITS (pt-PT miro high)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_PT-miro-high",
+        "rev": "main"
+      },
+      "files": [
+        "pt_PT-miro-high.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_PT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-pt-pt-tugao-medium",
+      "display_name": "Piper VITS (pt-PT tugao medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-pt_PT-tugao-medium",
+        "rev": "main"
+      },
+      "files": [
+        "pt_PT-tugao-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "pt_PT",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ro-ro-mihai-medium",
+      "display_name": "Piper VITS (ro-RO mihai medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ro_RO-mihai-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ro_RO-mihai-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ro_RO",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ru-ru-denis-medium",
+      "display_name": "Piper VITS (ru-RU denis medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ru_RU-denis-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ru_RU-denis-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ru_RU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ru-ru-dmitri-medium",
+      "display_name": "Piper VITS (ru-RU dmitri medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ru_RU-dmitri-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ru_RU-dmitri-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ru_RU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ru-ru-irina-medium",
+      "display_name": "Piper VITS (ru-RU irina medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ru_RU-irina-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ru_RU-irina-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ru_RU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-ru-ru-ruslan-medium",
+      "display_name": "Piper VITS (ru-RU ruslan medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-ru_RU-ruslan-medium",
+        "rev": "main"
+      },
+      "files": [
+        "ru_RU-ruslan-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "ru_RU",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-sk-sk-lili-medium",
+      "display_name": "Piper VITS (sk-SK lili medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-sk_SK-lili-medium",
+        "rev": "main"
+      },
+      "files": [
+        "sk_SK-lili-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "sk_SK",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-sl-si-artur-medium",
+      "display_name": "Piper VITS (sl-SI artur medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-sl_SI-artur-medium",
+        "rev": "main"
+      },
+      "files": [
+        "sl_SI-artur-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "sl_SI",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-sr-rs-serbski-institut-medium",
+      "display_name": "Piper VITS (sr-RS serbski_institut medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-sr_RS-serbski_institut-medium",
+        "rev": "main"
+      },
+      "files": [
+        "sr_RS-serbski_institut-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "sr_RS",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-sv-se-nst-medium",
+      "display_name": "Piper VITS (sv-SE nst medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-sv_SE-nst-medium",
+        "rev": "main"
+      },
+      "files": [
+        "sv_SE-nst-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "sv_SE",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-sw-cd-lanfrica-medium",
+      "display_name": "Piper VITS (sw-CD lanfrica medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-sw_CD-lanfrica-medium",
+        "rev": "main"
+      },
+      "files": [
+        "sw_CD-lanfrica-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "sw_CD",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-tr-tr-dfki-medium",
+      "display_name": "Piper VITS (tr-TR dfki medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-tr_TR-dfki-medium",
+        "rev": "main"
+      },
+      "files": [
+        "tr_TR-dfki-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "tr_TR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-tr-tr-fahrettin-medium",
+      "display_name": "Piper VITS (tr-TR fahrettin medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-tr_TR-fahrettin-medium",
+        "rev": "main"
+      },
+      "files": [
+        "tr_TR-fahrettin-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "tr_TR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-tr-tr-fettah-medium",
+      "display_name": "Piper VITS (tr-TR fettah medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-tr_TR-fettah-medium",
+        "rev": "main"
+      },
+      "files": [
+        "tr_TR-fettah-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "tr_TR",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-uk-ua-lada-x-low",
+      "display_name": "Piper VITS (uk-UA lada x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-uk_UA-lada-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "uk_UA-lada-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "uk_UA",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-uk-ua-ukrainian-tts-medium",
+      "display_name": "Piper VITS (uk-UA ukrainian_tts medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-uk_UA-ukrainian_tts-medium",
+        "rev": "main"
+      },
+      "files": [
+        "uk_UA-ukrainian_tts-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "uk_UA",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-vi-vn-25hours-single-low",
+      "display_name": "Piper VITS (vi-VN 25hours_single low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-vi_VN-25hours_single-low",
+        "rev": "main"
+      },
+      "files": [
+        "vi_VN-25hours_single-low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "vi_VN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-vi-vn-vais1000-medium",
+      "display_name": "Piper VITS (vi-VN vais1000 medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-vi_VN-vais1000-medium",
+        "rev": "main"
+      },
+      "files": [
+        "vi_VN-vais1000-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "vi_VN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-vi-vn-vivos-x-low",
+      "display_name": "Piper VITS (vi-VN vivos x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-vi_VN-vivos-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "vi_VN-vivos-x_low.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "vi_VN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-zh-cn-huayan-medium",
+      "display_name": "Piper VITS (zh-CN huayan medium)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-zh_CN-huayan-medium",
+        "rev": "main"
+      },
+      "files": [
+        "zh_CN-huayan-medium.onnx",
+        "tokens.txt"
+      ],
+      "prefixes": [],
+      "dependencies": [
+        "sherpa-espeak-ng-data"
+      ],
+      "meta": {
+        "languages": "zh_CN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-piper-zh-cn-huayan-x-low",
+      "display_name": "Piper VITS (zh-CN huayan x_low)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-piper-zh_CN-huayan-x_low",
+        "rev": "main"
+      },
+      "files": [
+        "zh_CN-huayan-x_low.onnx",
+        "tokens.txt",
+        "lexicon.txt"
+      ],
+      "prefixes": [],
+      "meta": {
+        "languages": "zh_CN",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-abyssinvoker",
+      "display_name": "VITS (vits-zh-hf-abyssinvoker)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-abyssinvoker",
+        "rev": "main"
+      },
+      "files": [
+        "abyssinvoker.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-bronya",
+      "display_name": "VITS (vits-zh-hf-bronya)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-bronya",
+        "rev": "main"
+      },
+      "files": [
+        "bronya.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-doom",
+      "display_name": "VITS (vits-zh-hf-doom)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-doom",
+        "rev": "main"
+      },
+      "files": [
+        "doom.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-echo",
+      "display_name": "VITS (vits-zh-hf-echo)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-echo",
+        "rev": "main"
+      },
+      "files": [
+        "echo.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-eula",
+      "display_name": "VITS (vits-zh-hf-eula)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-eula",
+        "rev": "main"
+      },
+      "files": [
+        "eula.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-fanchen-c",
+      "display_name": "VITS (vits-zh-hf-fanchen-C)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-fanchen-C",
+        "rev": "main"
+      },
+      "files": [
+        "vits-zh-hf-fanchen-C.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-fanchen-unity",
+      "display_name": "VITS (vits-zh-hf-fanchen-unity)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-fanchen-unity",
+        "rev": "main"
+      },
+      "files": [
+        "vits-zh-hf-fanchen-unity.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-fanchen-wnj",
+      "display_name": "VITS (vits-zh-hf-fanchen-wnj)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-fanchen-wnj",
+        "rev": "main"
+      },
+      "files": [
+        "vits-zh-hf-fanchen-wnj.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-fanchen-zhihuilaozhe",
+      "display_name": "VITS (vits-zh-hf-fanchen-ZhiHuiLaoZhe)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-fanchen-ZhiHuiLaoZhe",
+        "rev": "main"
+      },
+      "files": [
+        "vits-zh-hf-fanchen-ZhiHuiLaoZhe.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-fanchen-zhihuilaozhe-new",
+      "display_name": "VITS (vits-zh-hf-fanchen-ZhiHuiLaoZhe_new)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-fanchen-ZhiHuiLaoZhe_new",
+        "rev": "main"
+      },
+      "files": [
+        "vits-zh-hf-fanchen-ZhiHuiLaoZhe_new.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-keqing",
+      "display_name": "VITS (vits-zh-hf-keqing)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-keqing",
+        "rev": "main"
+      },
+      "files": [
+        "keqing.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-theresa",
+      "display_name": "VITS (vits-zh-hf-theresa)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-theresa",
+        "rev": "main"
+      },
+      "files": [
+        "theresa.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
+    },
+    {
+      "id": "vits-zh-hf-zenyatta",
+      "display_name": "VITS (vits-zh-hf-zenyatta)",
+      "engine": "sherpa_offline_tts",
+      "model_type": "vits",
+      "source": {
+        "kind": "hf",
+        "repo": "csukuangfj/vits-zh-hf-zenyatta",
+        "rev": "main"
+      },
+      "files": [
+        "zenyatta.onnx",
+        "tokens.txt",
+        "lexicon.txt",
+        "date.fst",
+        "new_heteronym.fst",
+        "number.fst",
+        "phone.fst"
+      ],
+      "prefixes": [
+        "dict/"
+      ],
+      "meta": {
+        "languages": "zh",
+        "description": "VITS voice via sherpa-onnx OfflineTtsVitsModelConfig.",
+        "size_hint_mb": 0
+      }
     }
   ]
 }
-

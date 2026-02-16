@@ -94,7 +94,8 @@ class ModelRepository(
                     return emptyList()
                 }
                 val required = runCatching { readManifest(manifest) }.getOrNull() ?: return listOf("${model.id}/$MANIFEST_NAME")
-                required.filterNot { File(dir, it).exists() }.map { "${model.id}/$it" }
+                // Union with explicit files from the current catalog so stale manifests are detected.
+                (required + model.files).distinct().filterNot { File(dir, it).exists() }.map { "${model.id}/$it" }
             }
         }
     }
@@ -212,13 +213,17 @@ class ModelRepository(
 
         val manifest = File(modelDir, MANIFEST_NAME)
         val cached = runCatching { if (manifest.exists()) readManifest(manifest) else null }.getOrNull()
-        val allRepoFiles = if (cached != null) {
-            // If we have a manifest already, assume it contains the resolved file list.
-            // This avoids re-hitting the HF API for huge repos.
-            return cached.distinct().sorted()
-        } else {
-            fetchRepoFileList(repoId = src.repo)
+        if (cached != null) {
+            // If a previous manifest exists and it already includes all explicit catalog files,
+            // reuse it to avoid re-hitting the HF API for huge repos. If the catalog changed
+            // (new explicit files), fall through and recompute.
+            val missingExplicit = explicit.filterNot { cached.contains(it) }
+            if (missingExplicit.isEmpty()) {
+                return cached.distinct().sorted()
+            }
         }
+
+        val allRepoFiles = fetchRepoFileList(repoId = src.repo)
 
         val fromPrefixes = model.prefixes.flatMap { prefix ->
             allRepoFiles.filter { it.startsWith(prefix) }
@@ -305,7 +310,8 @@ class ModelRepository(
                 }
                 val required = runCatching { readManifest(manifest) }.getOrNull()
                     ?: return ReadyState.NeedsDownload("manifest unreadable; re-download")
-                val missing = required.filterNot { File(dir, it).exists() }.map { "${model.id}/$it" }
+                // Union with explicit files from the current catalog so stale manifests are detected.
+                val missing = (required + model.files).distinct().filterNot { File(dir, it).exists() }.map { "${model.id}/$it" }
                 if (missing.isEmpty()) ReadyState.Ready else ReadyState.MissingFiles(missing)
             }
         }

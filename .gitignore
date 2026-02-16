@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Python
+__pycache__/
+*.pyc
+
 # Gradle / Android Studio
 **/.gradle/
 **/.kotlin/
@@ -22,4 +26,3 @@ artifacts/
 
 # NeMo export venv
 scripts/nemo/.venv-nemo/
-

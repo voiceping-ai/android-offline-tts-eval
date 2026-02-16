@@ -80,10 +80,10 @@ class SherpaOfflineTtsEngine(
         val debug = false
         val numThreads = options.threads
 
-        val vits = if (model.modelType == "vits") buildVitsConfig(modelDir) else OfflineTtsVitsModelConfig()
-        val kokoro = if (model.modelType == "kokoro") buildKokoroConfig(modelDir) else OfflineTtsKokoroModelConfig()
+        val vits = if (model.modelType == "vits") buildVitsConfig(model, modelDir) else OfflineTtsVitsModelConfig()
+        val kokoro = if (model.modelType == "kokoro") buildKokoroConfig(model, modelDir) else OfflineTtsKokoroModelConfig()
         val matcha = if (model.modelType == "matcha") buildMatchaConfig(model, modelDir) else OfflineTtsMatchaModelConfig()
-        val kitten = if (model.modelType == "kitten") buildKittenConfig(modelDir) else OfflineTtsKittenModelConfig()
+        val kitten = if (model.modelType == "kitten") buildKittenConfig(model, modelDir) else OfflineTtsKittenModelConfig()
 
         val modelConfig = OfflineTtsModelConfig(
             vits,
@@ -95,23 +95,28 @@ class SherpaOfflineTtsEngine(
             provider
         )
 
+        val ruleFsts = joinAbsolutePathsForSuffix(modelDir, ".fst")
+        val ruleFars = joinAbsolutePathsForSuffix(modelDir, ".far")
+
         return OfflineTtsConfig(
             modelConfig,
-            /* ruleFsts = */ "",
-            /* ruleFars = */ "",
+            /* ruleFsts = */ ruleFsts,
+            /* ruleFars = */ ruleFars,
             /* maxNumSentences = */ 0,
-            /* silenceScale = */ 0.0f
+            // sherpa-onnx validates this and rejects 0.0 as "too small".
+            /* silenceScale = */ 0.2f
         )
     }
 
-    private fun buildKokoroConfig(modelDir: File): OfflineTtsKokoroModelConfig {
+    private fun buildKokoroConfig(model: TtsModel, modelDir: File): OfflineTtsKokoroModelConfig {
         val modelPath = pickFirstExisting(modelDir, listOf("model.int8.onnx", "model.onnx"))
+            ?: model.files.firstOrNull { it.endsWith(".onnx") && File(modelDir, it).exists() }
             ?: throw IllegalStateException("Missing Kokoro model file in ${modelDir.absolutePath}")
 
         val voices = requireFile(modelDir, "voices.bin")
         val tokens = requireFile(modelDir, "tokens.txt")
 
-        val dataDir = File(modelDir, "espeak-ng-data").takeIf { it.exists() }?.absolutePath ?: ""
+        val dataDir = resolveEspeakDataDir(model, modelDir)
         val dictDir = File(modelDir, "dict").takeIf { it.exists() }?.absolutePath ?: ""
 
         val lexiconCandidates = listOf("lexicon-us-en.txt", "lexicon-gb-en.txt", "lexicon-zh.txt")
@@ -132,19 +137,27 @@ class SherpaOfflineTtsEngine(
         )
     }
 
-    private fun buildVitsConfig(modelDir: File): OfflineTtsVitsModelConfig {
-        val onnx = modelDir.listFiles()?.firstOrNull { it.isFile && it.name.endsWith(".onnx") }?.name
+    private fun buildVitsConfig(model: TtsModel, modelDir: File): OfflineTtsVitsModelConfig {
+        val onnx = model.files.firstOrNull { it.endsWith(".onnx") }
+            ?: modelDir.listFiles()?.firstOrNull { it.isFile && it.name.endsWith(".onnx") }?.name
             ?: throw IllegalStateException("Missing VITS .onnx model file in ${modelDir.absolutePath}")
 
         val tokens = requireFile(modelDir, "tokens.txt")
-        val dataDir = File(modelDir, "espeak-ng-data").takeIf { it.exists() }?.absolutePath ?: ""
+        val dataDir = resolveEspeakDataDir(model, modelDir)
+        val dictDir = File(modelDir, "dict").takeIf { it.exists() }?.absolutePath ?: ""
+
+        val lexiconCandidates = modelDir.listFiles()
+            ?.filter { it.isFile && ((it.name == "lexicon.txt") || (it.name.startsWith("lexicon") && it.name.endsWith(".txt"))) }
+            ?.sortedBy { it.name }
+            ?: emptyList()
+        val lexicon = lexiconCandidates.joinToString(separator = ",") { it.absolutePath }
 
         return OfflineTtsVitsModelConfig(
             /* model = */ File(modelDir, onnx).absolutePath,
-            /* lexicon = */ "",
+            /* lexicon = */ lexicon,
             /* tokens = */ tokens.absolutePath,
             /* dataDir = */ dataDir,
-            /* dictDir = */ "",
+            /* dictDir = */ dictDir,
             /* noiseScale = */ 0.667f,
             /* noiseScaleW = */ 0.8f,
             /* lengthScale = */ 1.0f
@@ -152,15 +165,17 @@ class SherpaOfflineTtsEngine(
     }
 
     private fun buildMatchaConfig(model: TtsModel, modelDir: File): OfflineTtsMatchaModelConfig {
-        val acoustic = pickFirstExisting(modelDir, listOf("model-steps-3.onnx", "model.onnx"))
+        val acoustic = model.files.firstOrNull { it.endsWith(".onnx") && File(modelDir, it).exists() }
+            ?: pickFirstExisting(modelDir, listOf("model-steps-3.onnx", "model.onnx"))
             ?: throw IllegalStateException("Missing Matcha acoustic model .onnx in ${modelDir.absolutePath}")
 
         val tokens = requireFile(modelDir, "tokens.txt")
-        val dataDir = File(modelDir, "espeak-ng-data").takeIf { it.exists() }?.absolutePath ?: ""
+        val dataDir = resolveEspeakDataDir(model, modelDir)
 
         // Dependency: HiFiGAN vocoder in its own model directory.
-        val vocoderDep = model.dependencies.firstOrNull()
-            ?.let { repo.modelById(it) }
+        val vocoderDep = model.dependencies
+            .mapNotNull { repo.modelById(it) }
+            .firstOrNull { dep -> dep.files.any { it.endsWith(".onnx") } && dep.modelType == "vocoder" }
             ?: throw IllegalStateException("Matcha model ${model.id} missing vocoder dependency")
         val vocoderFile = vocoderDep.files.firstOrNull { it.endsWith(".onnx") }
             ?: throw IllegalStateException("Vocoder dependency ${vocoderDep.id} has no .onnx file entry")
@@ -181,13 +196,14 @@ class SherpaOfflineTtsEngine(
         )
     }
 
-    private fun buildKittenConfig(modelDir: File): OfflineTtsKittenModelConfig {
+    private fun buildKittenConfig(model: TtsModel, modelDir: File): OfflineTtsKittenModelConfig {
         val modelPath = pickFirstExisting(modelDir, listOf("model.fp16.onnx", "model.onnx", "model.int8.onnx"))
+            ?: model.files.firstOrNull { it.endsWith(".onnx") && File(modelDir, it).exists() }
             ?: throw IllegalStateException("Missing Kitten model .onnx in ${modelDir.absolutePath}")
 
         val voices = requireFile(modelDir, "voices.bin")
         val tokens = requireFile(modelDir, "tokens.txt")
-        val dataDir = File(modelDir, "espeak-ng-data").takeIf { it.exists() }?.absolutePath ?: ""
+        val dataDir = resolveEspeakDataDir(model, modelDir)
 
         return OfflineTtsKittenModelConfig(
             /* model = */ File(modelDir, modelPath).absolutePath,
@@ -196,6 +212,26 @@ class SherpaOfflineTtsEngine(
             /* dataDir = */ dataDir,
             /* lengthScale = */ 1.0f
         )
+    }
+
+    private fun resolveEspeakDataDir(model: TtsModel, modelDir: File): String {
+        val direct = File(modelDir, "espeak-ng-data")
+        if (direct.exists()) return direct.absolutePath
+
+        for (depId in model.dependencies) {
+            val dep = repo.modelById(depId) ?: continue
+            val depEspeak = File(repo.modelDir(dep), "espeak-ng-data")
+            if (depEspeak.exists()) return depEspeak.absolutePath
+        }
+        return ""
+    }
+
+    private fun joinAbsolutePathsForSuffix(dir: File, suffix: String): String {
+        val items = dir.listFiles()
+            ?.filter { it.isFile && it.name.endsWith(suffix) }
+            ?.sortedBy { it.name }
+            ?: emptyList()
+        return items.joinToString(separator = ",") { it.absolutePath }
     }
 
     private fun requireFile(dir: File, name: String): File {
@@ -211,4 +247,3 @@ class SherpaOfflineTtsEngine(
         return null
     }
 }
-

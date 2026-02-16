@@ -3,24 +3,24 @@
 <text x="20" y="30" font-family="ui-sans-serif, system-ui" font-size="18" fill="#111827">Median RTF (lower is faster)</text>
 <text x="20" y="50" font-family="ui-sans-serif, system-ui" font-size="12" fill="#6b7280">Unit: rtf</text>
 <text x="20" y="73" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">android-system-tts</text>
-<rect x="260" y="60" width="16" height="18" rx="3" fill="#2563eb"/>
-<text x="284" y="73" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.055</text>
+<rect x="260" y="60" width="18" height="18" rx="3" fill="#2563eb"/>
+<text x="286" y="73" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.058</text>
 <text x="20" y="99" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">vits-piper-en-us-amy-low</text>
-<rect x="260" y="86" width="28" height="18" rx="3" fill="#2563eb"/>
-<text x="296" y="99" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.095</text>
+<rect x="260" y="86" width="24" height="18" rx="3" fill="#2563eb"/>
+<text x="292" y="99" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.076</text>
 <text x="20" y="125" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">vits-piper-en-us-ryan-low</text>
-<rect x="260" y="112" width="43" height="18" rx="3" fill="#2563eb"/>
-<text x="311" y="125" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.144</text>
-<text x="20" y="151" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">matcha-en-us-ljspeech</text>
-<rect x="260" y="138" width="51" height="18" rx="3" fill="#2563eb"/>
-<text x="319" y="151" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.171</text>
-<text x="20" y="177" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kitten-nano-en-v0_2-fp16</text>
-<rect x="260" y="164" width="115" height="18" rx="3" fill="#2563eb"/>
-<text x="383" y="177" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.385</text>
-<text x="20" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-int8-multi-lang-v1_1</text>
-<rect x="260" y="190" width="405" height="18" rx="3" fill="#2563eb"/>
-<text x="673" y="203" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">1.355</text>
-<text x="20" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-en-v0_19</text>
+<rect x="260" y="112" width="24" height="18" rx="3" fill="#2563eb"/>
+<text x="292" y="125" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.077</text>
+<text x="20" y="151" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">matcha-icefall-en-us-ljspeech-hifigan</text>
+<rect x="260" y="138" width="43" height="18" rx="3" fill="#2563eb"/>
+<text x="311" y="151" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.135</text>
+<text x="20" y="177" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kitten-nano-en-v0-2-fp16</text>
+<rect x="260" y="164" width="124" height="18" rx="3" fill="#2563eb"/>
+<text x="392" y="177" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">0.387</text>
+<text x="20" y="203" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-en-v0-19</text>
+<rect x="260" y="190" width="364" height="18" rx="3" fill="#2563eb"/>
+<text x="632" y="203" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">1.133</text>
+<text x="20" y="229" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="#111827">kokoro-int8-multi-lang-v1-1</text>
 <rect x="260" y="216" width="780" height="18" rx="3" fill="#2563eb"/>
-<text x="1048" y="229" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">2.608</text>
+<text x="1048" y="229" font-family="ui-sans-serif, system-ui" font-size="12" fill="#111827">2.423</text>
 </svg>

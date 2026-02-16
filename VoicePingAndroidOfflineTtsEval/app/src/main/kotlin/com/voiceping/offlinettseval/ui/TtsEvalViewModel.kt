@@ -284,7 +284,7 @@ class TtsEvalViewModel(app: Application) : AndroidViewModel(app) {
 
     private fun buildInitialState(): TtsEvalUiState {
         val models = repo.selectableModels()
-        val defaultId = models.firstOrNull { it.id == "kokoro-en-v0_19" }?.id
+        val defaultId = models.firstOrNull { it.id == "kokoro-en-v0-19" }?.id
             ?: models.firstOrNull()?.id
             ?: ""
         val ready = repo.modelById(defaultId)?.let { repo.ensureReady(it) } ?: ReadyState.NeedsDownload("no models")
@@ -369,4 +369,3 @@ class TtsEvalViewModel(app: Application) : AndroidViewModel(app) {
         activeLoadOptions = null
     }
 }
-

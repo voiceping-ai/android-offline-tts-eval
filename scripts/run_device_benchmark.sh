@@ -22,7 +22,10 @@ if [ -n "$SDK_ROOT" ] && [ -d "$SDK_ROOT" ]; then
 fi
 
 # Default: the initial planned model set (system + sherpa models).
-MODEL_IDS="${MODEL_IDS:-android-system-tts,kokoro-en-v0_19,kokoro-int8-multi-lang-v1_1,vits-piper-en-us-amy-low,vits-piper-en-us-ryan-low,matcha-en-us-ljspeech,kitten-nano-en-v0_2-fp16}"
+# NOTE: Allow MODEL_IDS="" (empty) to run all selectable models.
+if [ -z "${MODEL_IDS+x}" ]; then
+  MODEL_IDS="android-system-tts,kokoro-en-v0-19,kokoro-int8-multi-lang-v1-1,vits-piper-en-us-amy-low,vits-piper-en-us-ryan-low,matcha-icefall-en-us-ljspeech-hifigan,kitten-nano-en-v0-2-fp16"
+fi
 
 echo "Installing app + test APKs…"
 (

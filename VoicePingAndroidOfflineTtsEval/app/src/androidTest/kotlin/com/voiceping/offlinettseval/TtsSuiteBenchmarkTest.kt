@@ -59,7 +59,7 @@ class TtsSuiteBenchmarkTest {
         val engineFactory = EngineFactory(ctx, repo)
         val runner = TtsSuiteRunner(repo, engineFactory)
 
-        val model = repo.modelById("kokoro-en-v0_19") ?: return@runBlocking
+        val model = repo.modelById("kokoro-en-v0-19") ?: return@runBlocking
         assumeTrue(repo.ensureReady(model) is ReadyState.Ready)
 
         val suiteAll = PromptSuite.load(ctx)
@@ -98,6 +98,70 @@ class TtsSuiteBenchmarkTest {
         val suite = suiteAll.copy(prompts = suiteAll.prompts.take(1))
 
         val runId = "instrumentation_nemo_${System.currentTimeMillis()}"
+        runner.runSuite(
+            model = model,
+            suite = suite,
+            runId = runId,
+            runMode = "cold",
+            warmIterations = 1,
+            loadOptions = LoadOptions(threads = 4, provider = "cpu"),
+            speakerId = 0,
+            speed = 1.0f,
+            onProgress = { _ -> },
+        )
+
+        val dir = File(File(repo.ttsEvalRoot(), runId), "${model.id}/${suite.prompts[0].id}")
+        assertTrue(File(dir, "result.json").exists())
+        assertTrue(File(dir, "audio.wav").exists())
+    }
+
+    @Test
+    fun sherpa_vits_piper_runsIfReady() = runBlocking {
+        val ctx = InstrumentationRegistry.getInstrumentation().targetContext
+        val catalog = ModelCatalog.load(ctx)
+        val repo = ModelRepository(ctx, catalog)
+        val engineFactory = EngineFactory(ctx, repo)
+        val runner = TtsSuiteRunner(repo, engineFactory)
+
+        val model = repo.modelById("vits-piper-en-us-amy-low") ?: return@runBlocking
+        assumeTrue(repo.ensureReady(model) is ReadyState.Ready)
+
+        val suiteAll = PromptSuite.load(ctx)
+        val suite = suiteAll.copy(prompts = suiteAll.prompts.take(1))
+
+        val runId = "instrumentation_vits_piper_${System.currentTimeMillis()}"
+        runner.runSuite(
+            model = model,
+            suite = suite,
+            runId = runId,
+            runMode = "cold",
+            warmIterations = 1,
+            loadOptions = LoadOptions(threads = 4, provider = "cpu"),
+            speakerId = 0,
+            speed = 1.0f,
+            onProgress = { _ -> },
+        )
+
+        val dir = File(File(repo.ttsEvalRoot(), runId), "${model.id}/${suite.prompts[0].id}")
+        assertTrue(File(dir, "result.json").exists())
+        assertTrue(File(dir, "audio.wav").exists())
+    }
+
+    @Test
+    fun sherpa_matcha_hifigan_runsIfReady() = runBlocking {
+        val ctx = InstrumentationRegistry.getInstrumentation().targetContext
+        val catalog = ModelCatalog.load(ctx)
+        val repo = ModelRepository(ctx, catalog)
+        val engineFactory = EngineFactory(ctx, repo)
+        val runner = TtsSuiteRunner(repo, engineFactory)
+
+        val model = repo.modelById("matcha-icefall-en-us-ljspeech-hifigan") ?: return@runBlocking
+        assumeTrue(repo.ensureReady(model) is ReadyState.Ready)
+
+        val suiteAll = PromptSuite.load(ctx)
+        val suite = suiteAll.copy(prompts = suiteAll.prompts.take(1))
+
+        val runId = "instrumentation_matcha_${System.currentTimeMillis()}"
         runner.runSuite(
             model = model,
             suite = suite,

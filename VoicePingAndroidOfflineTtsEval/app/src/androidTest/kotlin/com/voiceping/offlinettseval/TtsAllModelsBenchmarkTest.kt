@@ -41,12 +41,21 @@ class TtsAllModelsBenchmarkTest {
         val runner = TtsSuiteRunner(repo, engineFactory)
         val suite = PromptSuite.load(ctx)
 
-        val modelIdsArg = (args.getString("model_ids") ?: "").trim()
-        val modelsToRun: List<TtsModel> = if (modelIdsArg.isNotBlank()) {
-            val wanted = modelIdsArg.split(",").map { it.trim() }.filter { it.isNotBlank() }.toSet()
-            repo.selectableModels().filter { wanted.contains(it.id) }
+        val modelIdsRaw = args.getString("model_ids")
+        val modelsToRun: List<TtsModel> = if (modelIdsRaw != null) {
+            // If the caller explicitly provides model_ids:
+            // - non-empty: run that subset
+            // - empty string: run all selectable models
+            val modelIdsArg = modelIdsRaw.trim()
+            if (modelIdsArg.isNotBlank()) {
+                val wanted = modelIdsArg.split(",").map { it.trim() }.filter { it.isNotBlank() }.toSet()
+                repo.selectableModels().filter { wanted.contains(it.id) }
+            } else {
+                repo.selectableModels()
+            }
         } else {
-            repo.selectableModels()
+            // Default for connectedDebugAndroidTest (no args): keep it fast.
+            repo.selectableModels().filter { it.id == "android-system-tts" }
         }
 
         // Dependency ref-counts for optional cleanup.
@@ -123,4 +132,3 @@ class TtsAllModelsBenchmarkTest {
         println("TTS benchmark complete. Exports dir: /sdcard/Android/data/com.voiceping.ttseval/files/exports/tts_eval/$runId/")
     }
 }
-

@@ -7,16 +7,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -28,6 +30,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.voiceping.offlinettseval.catalog.ModelSource
 import com.voiceping.offlinettseval.engine.ReadyState
@@ -39,7 +42,8 @@ fun TtsEvalScreen(vm: TtsEvalViewModel = viewModel()) {
     val models = state.models
     val selected = models.firstOrNull { it.id == state.selectedModelId } ?: models.firstOrNull()
 
-    var modelMenuOpen by remember { mutableStateOf(false) }
+    var modelPickerOpen by remember { mutableStateOf(false) }
+    var modelQuery by remember { mutableStateOf("") }
     var showImportCommand by remember { mutableStateOf(false) }
     val scroll = rememberScrollState()
 
@@ -64,20 +68,8 @@ fun TtsEvalScreen(vm: TtsEvalViewModel = viewModel()) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(onClick = { modelMenuOpen = true }) {
+                Button(onClick = { modelPickerOpen = true }) {
                     Text(selected.displayName)
-                }
-                DropdownMenu(expanded = modelMenuOpen, onDismissRequest = { modelMenuOpen = false }) {
-                    models.forEach { m ->
-                        DropdownMenuItem(
-                            text = { Text(m.displayName) },
-                            onClick = {
-                                modelMenuOpen = false
-                                showImportCommand = false
-                                vm.setSelectedModel(m.id)
-                            }
-                        )
-                    }
                 }
 
                 val status = when (val r = state.readyState) {
@@ -86,6 +78,62 @@ fun TtsEvalScreen(vm: TtsEvalViewModel = viewModel()) {
                     is ReadyState.MissingFiles -> "Missing ${r.missing.size}"
                 }
                 Text(status, style = MaterialTheme.typography.bodyMedium)
+            }
+
+            if (modelPickerOpen) {
+                val q = modelQuery.trim().lowercase()
+                val filtered = if (q.isBlank()) {
+                    models
+                } else {
+                    models.filter { m ->
+                        m.displayName.lowercase().contains(q) || m.id.lowercase().contains(q)
+                    }
+                }
+
+                Dialog(onDismissRequest = { modelPickerOpen = false }) {
+                    Surface(modifier = Modifier.fillMaxWidth(), tonalElevation = 6.dp) {
+                        Column(
+                            modifier = Modifier.padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            Text("Select model", style = MaterialTheme.typography.titleMedium)
+
+                            OutlinedTextField(
+                                value = modelQuery,
+                                onValueChange = { modelQuery = it },
+                                label = { Text("Search (name or id)") },
+                                modifier = Modifier.fillMaxWidth(),
+                                singleLine = true
+                            )
+
+                            LazyColumn(modifier = Modifier.fillMaxWidth().heightIn(max = 420.dp)) {
+                                items(filtered, key = { it.id }) { m ->
+                                    TextButton(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        onClick = {
+                                            modelPickerOpen = false
+                                            modelQuery = ""
+                                            showImportCommand = false
+                                            vm.setSelectedModel(m.id)
+                                        }
+                                    ) {
+                                        Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                                            Text(m.displayName, style = MaterialTheme.typography.bodyMedium)
+                                            Text(m.id, style = MaterialTheme.typography.bodySmall)
+                                        }
+                                    }
+                                }
+                            }
+
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.End
+                            ) {
+                                TextButton(onClick = { modelPickerOpen = false }) { Text("Close") }
+                            }
+                        }
+                    }
+                }
             }
 
             Text(selected.inferenceMethod, style = MaterialTheme.typography.bodySmall)
@@ -255,4 +303,3 @@ fun TtsEvalScreen(vm: TtsEvalViewModel = viewModel()) {
         }
     }
 }
-
