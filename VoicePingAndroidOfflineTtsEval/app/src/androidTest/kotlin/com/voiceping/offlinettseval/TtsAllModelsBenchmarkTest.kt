@@ -47,7 +47,9 @@ class TtsAllModelsBenchmarkTest {
             // - non-empty: run that subset
             // - empty string: run all selectable models
             val modelIdsArg = modelIdsRaw.trim()
-            if (modelIdsArg.isNotBlank()) {
+            if (modelIdsArg.equals("__ALL_MODELS__", ignoreCase = true)) {
+                repo.selectableModels()
+            } else if (modelIdsArg.isNotBlank()) {
                 val wanted = modelIdsArg.split(",").map { it.trim() }.filter { it.isNotBlank() }.toSet()
                 repo.selectableModels().filter { wanted.contains(it.id) }
             } else {

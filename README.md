@@ -92,7 +92,7 @@ python android-offline-tts-eval/scripts/nemo/export_hifigan_onnx.py
 android-offline-tts-eval/scripts/nemo/push_bundle_to_device.sh
 ```
 
-## Latest Benchmark (Example)
+## Latest Benchmark (Refreshed 2026-02-16)
 Device: `SM-G973C` (sdk_int=31)  
 Run: `benchmark_1771207849433_warm` (warm, `warm_iterations=1`, `threads=4`)
 

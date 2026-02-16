@@ -27,6 +27,12 @@ if [ -z "${MODEL_IDS+x}" ]; then
   MODEL_IDS="android-system-tts,kokoro-en-v0-19,kokoro-int8-multi-lang-v1-1,vits-piper-en-us-amy-low,vits-piper-en-us-ryan-low,matcha-icefall-en-us-ljspeech-hifigan,kitten-nano-en-v0-2-fp16"
 fi
 
+# adb shell strips empty arguments. Use explicit sentinel for "all models".
+MODEL_IDS_ARG="$MODEL_IDS"
+if [ -z "$MODEL_IDS_ARG" ]; then
+  MODEL_IDS_ARG="__ALL_MODELS__"
+fi
+
 echo "Installing app + test APKs…"
 (
   cd "$APP_DIR"
@@ -54,7 +60,7 @@ echo "  download_hf: $DOWNLOAD_HF delete_after: $DELETE_AFTER"
 
 adb shell am instrument -w -r \
   -e class com.voiceping.offlinettseval.TtsAllModelsBenchmarkTest \
-  -e model_ids "$MODEL_IDS" \
+  -e model_ids "$MODEL_IDS_ARG" \
   -e run_mode "$RUN_MODE" \
   -e warm_iterations "$WARM_ITERATIONS" \
   -e threads "$THREADS" \
